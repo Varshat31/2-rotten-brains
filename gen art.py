@@ -27,6 +27,10 @@ class Submission(models.Model):
     execution_time = models.FloatField(null=True)
     memory_used = models.FloatField(null=True)
     submitted_at = models.DateTimeField(auto_now_add=True)
-    #
+    #Integrate a custom analytics dashboard for contest insights
+def contest_stats(contest):
+    submissions = Submission.objects.filter(problem__contest=contest)
+    return {"total_submissions": submissions.count()}
+
 
 
